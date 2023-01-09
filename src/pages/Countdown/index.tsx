@@ -1,10 +1,12 @@
-import { useState, KeyboardEvent, useEffect, useRef } from 'react'
+import { useState, KeyboardEvent, useEffect, useRef, useContext } from 'react'
 
 // Icons
 import { BsAlarm } from 'react-icons/bs'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import BaseBtn from '../../components/BaseBtn'
 import Counter from '../../components/Counter'
+import useCountdown from '../../hooks/useCountdown'
+import { AppContext } from '../../provider/AppProvider'
 import { defaultTheme } from '../../themes/default'
 import FormCountdown from '../FormCountdown'
 
@@ -17,24 +19,32 @@ type CountdownFormProps = {
 
 function CountdownTimer() {
   let location = useLocation()
+  const navigate = useNavigate()
+  const { titleCounter } = useContext(AppContext)
 
-  const [isCounting, setIsCounting] = useState<boolean>(true)
   const [dateCountdown, setDateCountdown] = useState<string>()
+  const [isCounting, setIsCounting] = useState<boolean>(true)
 
-  function handleKeyUp(event: KeyboardEvent) {
-    event.preventDefault
-
-    if (event.code === 'Enter') {
-    }
-  }
+  const [second, minute, hour, day, refreshIntervalId] = useCountdown(
+    dateCountdown as string
+  )
 
   function stopCountdown() {
-    setIsCounting(false)
+    navigate(`/`)
+    console.log(refreshIntervalId)
+
+    clearInterval(refreshIntervalId)
   }
+
+  console.log('ra')
 
   useEffect(() => {
     setIsCounting(true)
-    setDateCountdown(location.pathname)
+
+    let str = location.pathname
+    str = str.substring(1)
+    str = str.slice(0, -1)
+    setDateCountdown(str)
   }, [location])
 
   return (
@@ -42,13 +52,13 @@ function CountdownTimer() {
       <div className="container">
         {isCounting && (
           <div className="countdown">
-            <h1> Contagem regressiva</h1>
+            <h1> {titleCounter} </h1>
 
             <div className="timer">
-              <Counter number={9} title={'Dias'} />
-              <Counter number={8} title={'Horas'} />
-              <Counter number={40} title={'Minutos'} />
-              <Counter number={11} title={'Segundos'} />
+              <Counter number={day as number} title={'Dias'} />
+              <Counter number={hour as number} title={'Horas'} />
+              <Counter number={minute as number} title={'Minutos'} />
+              <Counter number={second as number} title={'Segundos'} />
             </div>
 
             <BaseBtn

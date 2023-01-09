@@ -42,9 +42,9 @@ export const FormCountdownContainer = styled.section`
     .containerSpecialDates {
       display: flex;
       flex-wrap: wrap;
-
       flex-direction: row;
       justify-content: space-between;
+      gap: 1rem;
 
       .SpecialDates {
         display: flex;
