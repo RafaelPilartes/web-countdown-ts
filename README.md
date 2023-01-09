@@ -1,6 +1,6 @@
 ## Coffee Delivery
 
-<img src="https://user-images.githubusercontent.com/71772559/178171983-f724d1a7-deb4-4d13-aa92-09e1cac4ec36.png" align="center" />
+<img src="https://raw.githubusercontent.com/RafaelPilartes/web-countdown-ts/main/public/CoverCountdown.png" align="center" />
 
 Fui utilizado conceitos um pouco mais básicos desenvolvendo do zero uma aplicação de Contagem regressiva!
 
