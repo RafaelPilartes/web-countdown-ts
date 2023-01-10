@@ -1,4 +1,4 @@
-## Coffee Delivery
+## Countdown
 
 <img src="https://raw.githubusercontent.com/RafaelPilartes/web-countdown-ts/main/public/CoverCountdown.png" align="center" />
 
