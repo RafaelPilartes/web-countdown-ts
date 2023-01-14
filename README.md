@@ -4,6 +4,12 @@
 
 Fui utilizado conceitos um pouco mais básicos desenvolvendo do zero uma aplicação de Contagem regressiva!
 
+## 🌐 Deploy
+
+<a href='https://countdown-rp.netlify.app/'>
+  Ir para o site "Countdown"
+</a>
+
 ## 🛠️ Nesse projeto foi utilizado
 
 - Vite
